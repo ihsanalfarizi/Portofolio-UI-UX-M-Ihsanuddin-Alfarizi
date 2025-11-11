@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>M. Ihsanuddin Alfarizi — UI/UX Portfolio</title>
+  <meta name="description" content="Portfolio UI/UX Designer — M. Ihsanuddin Alfarizi. Project: FireUp, SIANTI, CLA Indonesia, Universitas Mercu Buana." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    :root{
+      --bg:#0a0e1a; --card:#12172a; --muted:#8b92a8; --accent:#06b6d4; 
+      --accent-2:#7c3aed; --accent-3:#f59e0b;
+      --glass: rgba(255,255,255,0.05);
+      --radius:20px; --max-width:1200px;
+      --ff-sans: 'Inter', ui-sans-serif, system-ui, -apple-system;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--ff-sans);
+      background: radial-gradient(ellipse at top, #1a1f3a 0%, #0a0e1a 50%);
+      color: #e6eef6;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Header with animation */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 32px;
+      background: rgba(18, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideDown 0.6s ease-out;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      box-shadow: 0 8px 32px rgba(6, 182, 212, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .logo:hover {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 12px 40px rgba(6, 182, 212, 0.4);
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    
+    p.lead {
+      color: var(--muted);
+      margin: 4px 0 0;
+      font-size: 0.95rem;
+    }
+    
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover {
+      color: var(--accent);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      margin-top: 60px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+      padding: 36px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+    
+    .about h2 {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    
+    .about p.lead {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent) 0%, #0891b2 100%);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+      box-shadow: none;
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Quick info card */
+    aside.card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    
+    .meta {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    .tag {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(124, 58, 237, 0.15) 100%);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: #fff;
+      font-weight: 500;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    
+    .tag:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(124, 58, 237, 0.25) 100%);
+    }
+    
+    /* Projects section */
+    .projects {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, #fff 0%, var(--accent) 50%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .project {
+      padding: 28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease-out both;
+      animation-delay: calc(var(--i) * 0.1s);
+    }
+    
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    
+    .project:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .project:nth-child(1) { --i: 0; }
+    .project:nth-child(2) { --i: 1; }
+    .project:nth-child(3) { --i: 2; }
+    .project:nth-child(4) { --i: 3; }
+    
+    .project:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(6, 182, 212, 0.4);
+      box-shadow: 0 20px 60px rgba(6, 182, 212, 0.2);
+    }
+    
+    .project h3 {
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    
+    .project .meta {
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+      opacity: 0.8;
+    }
+    
+    .project > p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    
+    .details {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      display: none;
+      animation: expandDown 0.3s ease-out;
+    }
+    
+    @keyframes expandDown {
+      from {
+        opacity: 0;
+        max-height: 0;
+      }
+      to {
+        opacity: 1;
+        max-height: 1000px;
+      }
+    }
+    
+    .project.show .details {
+      display: block;
+    }
+    
+    .details strong {
+      color: var(--accent);
+      display: block;
+      margin: 16px 0 8px;
+      font-size: 1.05rem;
+    }
+    
+    .details ul, .details ol {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+    
+    .details li {
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+    
+    .links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .links a:hover {
+      background: rgba(6, 182, 212, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+    }
+    
+    .toggle {
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+    
+    .toggle:hover {
+      transform: translateX(4px);
+    }
+    
+    /* Contact section */
+    #contact {
+      margin-top: 80px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    #contact .card {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+    }
+    
+    #contact h3 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    
+    #contact a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    
+    #contact a:hover {
+      color: #fff;
+    }
+    
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding: 32px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    /* Responsive */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      nav a {
+        margin: 0 12px;
+      }
+      
+      .about h2 {
+        font-size: 1.8rem;
+      }
+      
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Accessibility */
+    a:focus, button:focus, .toggle:focus {
+      outline: 3px solid rgba(6, 182, 212, 0.5);
+      outline-offset: 3px;
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      z-index: 1000;
+      transform-origin: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-indicator"></div>
+  
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">MI</div>
+        <div>
+          <h1>M. Ihsanuddin Alfarizi</h1>
+          <p class="lead">UI/UX Designer — Mobile & Web · Figma · Product-minded</p>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card about" id="about">
+        <h2>Hi — I design simple, usable interfaces for mobile & web</h2>
+        <p class="lead">Saya membuat desain yang bersih, konsisten, dan fokus pada user flow. Portofolio ini menampilkan beberapa proyek khusus dari pekerjaan kuliah, magang, freelance, dan redesign institusi.</p>
+        <div class="cta">
+          <a class="btn" href="#projects">
+            <span>Lihat Projects</span>
+            <span>→</span>
+          </a>
+          <a class="btn btn-secondary" href="#contact">
+            <span>Hubungi saya</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3>Quick Info</h3>
+        <p class="meta">Role: UI/UX Designer • Tools: Figma • Location: Indonesia</p>
+        <div class="tags">
+          <div class="tag">Mobile Design</div>
+          <div class="tag">Web Design</div>
+          <div class="tag">Prototyping</div>
+          <div class="tag">Design Systems</div>
+        </div>
+        <hr style="opacity:.1;margin:20px 0;border:none;height:1px;background:rgba(255,255,255,0.1)">
+        <p style="color:var(--muted);font-size:0.95rem;margin-bottom:12px">Download resume / kontak via email:</p>
+        <p style="margin:6px 0;color:#fff"><strong>Email:</strong> ihsan.alfarizi@example.com</p>
+      </aside>
+    </section>
+
+    <main>
+      <h2 class="section-title" id="projects">Featured Projects</h2>
+      
+      <section class="projects">
+        <article class="project" id="fireup">
+          <h3>FireUp — Travel Booking App</h3>
+          <div class="meta">Year: 2022 • Role: UI/UX Designer • Tools: Figma • Type: College Assignment</div>
+          <p>FireUp adalah aplikasi mobile untuk booking tiket pesawat, hotel, dan bus dalam satu platform, mirip seperti Traveloka. Fokus pada proses booking yang mudah dan user-friendly.</p>
+          <div class="details">
+            <strong>About the Project</strong>
+            <p>FireUp dirancang sebagai solusi all-in-one untuk kebutuhan perjalanan, menggabungkan booking pesawat, hotel, dan bus dalam satu aplikasi mobile yang modern dan intuitif.</p>
+            
+            <strong>Key Features</strong>
+            <ul>
+              <li><strong>Flight Booking</strong> — Cari dan pesan tiket pesawat dengan filter harga dan jadwal</li>
+              <li><strong>Hotel Booking</strong> — Cari hotel dengan review, rating, dan foto lengkap</li>
+              <li><strong>Bus Booking</strong> — Pesan tiket bus antar kota dengan pilihan kursi interaktif</li>
+              <li><strong>User Profile</strong> — Kelola informasi pribadi dan riwayat pemesanan</li>
+              <li><strong>Payment Integration</strong> — Multiple payment methods untuk kemudahan transaksi</li>
+            </ul>
+            
+            <strong>Design Process</strong>
+            <ol>
+              <li><strong>Research</strong> — Riset kompetitor (Traveloka, Tiket.com) dan identifikasi kebutuhan pengguna untuk proses booking yang mudah</li>
+              <li><strong>Wireframing</strong> — Merancang struktur halaman dan user flow untuk setiap fitur booking</li>
+              <li><strong>UI Design</strong> — Membuat desain visual yang modern, clean, dan konsisten menggunakan Figma</li>
+              <li><strong>Prototyping</strong> — Membuat interactive prototype untuk simulasi user journey lengkap</li>
+            </ol>
+            
+            <strong>Screens Designed</strong>
+            <p>Splash Screen • Home • Search & Results • Flight Details • Hotel Details • Bus Booking • Seat Selection • Payment • Confirmation • Profile • Order History</p>
+            
+            <strong>Design Highlights</strong>
+            <ul>
+              <li>✓ Clean & modern interface dengan visual hierarchy yang jelas</li>
+              <li>✓ Simple booking flow dengan minimal steps untuk mengurangi friction</li>
+              <li>✓ Konsisten design system dengan reusable components</li>
+              <li>✓ Intuitive navigation dengan bottom tab bar</li>
+              <li>✓ Visual feedback pada setiap interaksi user</li>
+            </ul>
+            
+            <strong>Key Learnings</strong>
+            <ul>
+              <li>Memahami pentingnya user flow dalam design untuk mengurangi drop-off rate</li>
+              <li>Menggunakan design system untuk konsistensi dan efisiensi development</li>
+              <li>Membuat interface yang tidak hanya menarik tapi juga fungsional dan praktis</li>
+              <li>Importance of simplifying complex booking processes</li>
+            </ul>
+          </div>
+          <div class="links">
+            <a href="https://www.figma.com/design/591rKf7yJosaHLRD7TIH1p/PROJEK-1?node-id=0-1&p=f&t=gHd3N19upgA9qXfv-0" target="_blank">
+              <span>Figma</span>
+              <span>↗</span>
+            </a>
+          </div>
+          <div class="toggle" role="button" tabindex="0" aria-pressed="false">
+            <span>Show details</span>
+            <span>▾</span>
+          </div>
+        </article>
+
+        <article class="project" id="sianti">
+          <h3>SIANTI — Licensing & Tax Management App</h3>
+          <div class="meta">Year: Juni 2023 • Role: UI/UX Designer • Tools: Figma • Type: Internship (Kominfo) • Status: Live on Play Store</div>
+          <p>SIANTI adalah aplikasi mobile untuk mengelola data perusahaan terkait perizinan dan pajak terhadap SDPPI. Dikerjakan saat magang di Kementerian Komunikasi dan Informatika.</p>
+          <div class="details">
+            <strong>About the Project</strong>
+            <p>Aplikasi ini dikembangkan untuk memudahkan perusahaan dalam mengakses dan mengelola informasi perizinan serta kewajiban pajak yang berkaitan dengan SDPPI (Sumber Daya dan Perangkat Pos dan Informatika). Proyek ini dikerjakan selama masa magang di Kementerian Komunikasi dan Informatika.</p>
+            
+            <strong>Key Features</strong>
+            <ul>
+              <li><strong>Company Data Management</strong> — Kelola data perusahaan secara digital dengan mudah</li>
+              <li><strong>Licensing Information</strong> — Akses informasi perizinan SDPPI dengan interface yang jelas</li>
+              <li><strong>Tax Management</strong> — Monitoring kewajiban pajak perusahaan secara real-time</li>
+              <li><strong>Document Access</strong> — Akses dan download dokumen perizinan dengan mudah</li>
+              <li><strong>Notification System</strong> — Alert untuk deadline perizinan dan pajak</li>
+            </ul>
+            
+            <strong>Design Process & Challenges</strong>
+            <ol>
+              <li><strong>Requirements Gathering</strong> — Bekerja sama dengan tim Kominfo untuk memahami kebutuhan user dan sistem perizinan SDPPI yang kompleks</li>
+              <li><strong>Wireframing & User Flow</strong> — Merancang struktur informasi yang kompleks menjadi interface yang mudah dipahami</li>
+              <li><strong>UI Design</strong> — Membuat desain yang profesional dan sesuai dengan guideline aplikasi pemerintah</li>
+              <li><strong>Design Handoff</strong> — Kolaborasi dengan developer untuk implementasi ke aplikasi production</li>
+            </ol>
+            
+            <strong>Challenges & Solutions</strong>
+            <p><strong>Challenge:</strong> Menampilkan data perizinan dan pajak yang sangat kompleks<br>
+            <strong>Solution:</strong> Menggunakan card system dan categorization untuk memudahkan navigasi dan pemahaman informasi</p>
+            
+            <p><strong>Challenge:</strong> Target user dengan tingkat digital literacy berbeda<br>
+            <strong>Solution:</strong> Design yang simple dan intuitive dengan clear labeling dan helpful tooltips</p>
+            
+            <strong>Design Highlights</strong>
+            <ul>
+              <li>✓ Professional & clean interface untuk aplikasi B2B government</li>
+              <li>✓ Information architecture yang jelas untuk data kompleks</li>
+              <li>✓ Accessible design sesuai standar pemerintahan Indonesia</li>
+              <li>✓ User-friendly meskipun menangani data teknis perizinan</li>
+              <li>✓ Clear visual hierarchy untuk prioritas informasi</li>
+            </ul>
+            
+            <strong>Impact</strong>
+            <ul>
+              <li>✓ Aplikasi berhasil diluncurkan di Google Play Store</li>
+              <li>✓ Digunakan oleh perusahaan untuk mengelola perizinan SDPPI</li>
+              <li>✓ Membantu digitalisasi proses perizinan di Kominfo</li>
+              <li>✓ Mengurangi waktu proses pengurusan perizinan</li>
+            </ul>
+            
+            <strong>Key Learnings</strong>
+            <ul>
+              <li>Pengalaman bekerja dalam project pemerintahan dengan requirement spesifik dan formal</li>
+              <li>Kolaborasi dengan stakeholder teknis dan development team</li>
+              <li>Merancang UI/UX untuk aplikasi B2B dengan data kompleks</li>
+              <li>End-to-end process dari design hingga deployment ke production</li>
+              <li>Importance of accessibility dan compliance dalam government apps</li>
+            </ul>
+          </div>
+          <div class="links">
+            <a href="https://www.figma.com/design/EOrwThI5NqBGnZLjmMznZg/SIANTI?node-id=0-1&p=f&t=bECJVWdjk8ddJ1tZ-0" target="_blank">
+              <span>Figma</span>
+              <span>↗</span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.sianti" target="_blank">
+              <span>Play Store</span>
+              <span>↗</span>
+            </a>
+          </div>
+          <div class="toggle" role="button" tabindex="0" aria-pressed="false">
+            <span>Show details</span>
+            <span>▾</span>
+          </div>
+        </article>
+
+        <article class="project" id="cla">
+          <h3>CLA Indonesia — Legal Service Website</h3>
+          <div class="meta">Year: Juni 2024 • Role: UI/UX Designer • Tools: Figma • Type: Freelance • Status: Live Website</div>
+          <p>Website corporate untuk firma legal yang menyediakan berbagai paket layanan legal untuk perusahaan. Fokus pada trust, profesionalisme, dan kemudahan akses informasi layanan.</p>
+          <div class="details">
+            <strong>About the Project</strong>
+            <p>CLA Indonesia adalah platform digital untuk perusahaan konsultan hukum yang menyediakan layanan pengurusan legalitas bisnis. Website ini dirancang untuk memudahkan klien dalam memilih paket layanan yang sesuai dengan kebutuhan perusahaan mereka, dengan tampilan profesional yang membangun trust.</p>
+            
+            <strong>Key Features</strong>
+            <ul>
+              <li><strong>Service Packages</strong> — Paket layanan Tax, Legal, dan Associate dengan detail lengkap</li>
+              <li><strong>Service Catalog</strong> — Detail informasi setiap layanan yang ditawarkan dengan pricing</li>
+              <li><strong>Company Profile</strong> — Informasi lengkap tentang perusahaan dan tim</li>
+              <li><strong>Contact & Consultation</strong> — Fitur untuk request konsultasi dan inquiry</li>
+              <li><strong>Responsive Design</strong> — Optimal di desktop, tablet, dan mobile</li>
+              <li><strong>Testimonials</strong> — Client reviews untuk membangun kredibilitas</li>
+            </ul>
+            
+            <strong>Service Categories</strong>
+            <p><strong>Tax Services</strong> — Layanan konsultasi dan pengurusan perpajakan perusahaan<br>
+            <strong>Legal Services</strong> — Layanan konsultasi hukum dan pengurusan legalitas bisnis<br>
+            <strong>Associate Services</strong> — Layanan pendampingan dan partnership untuk kebutuhan legal perusahaan</p>
+            
+            <strong>Design Process</strong>
+            <ol>
+              <li><strong>Client Brief & Research</strong> — Memahami kebutuhan bisnis klien dan target market (perusahaan yang membutuhkan legal service)</li>
+              <li><strong>Information Architecture</strong> — Merancang struktur konten dan kategori layanan yang mudah dipahami</li>
+              <li><strong>UI Design</strong> — Membuat desain profesional dan trustworthy sesuai dengan industri legal</li>
+              <li><strong>Responsive Design</strong> — Memastikan website optimal di berbagai device dan screen size</li>
+            </ol>
+            
+            <strong>Challenges & Solutions</strong>
+            <p><strong>Challenge:</strong> Menampilkan berbagai paket layanan yang kompleks<br>
+            <strong>Solution:</strong> Menggunakan card-based layout dengan categorization yang jelas dan comparison table</p>
+            
+            <p><strong>Challenge:</strong> Membangun trust untuk layanan legal online<br>
+            <strong>Solution:</strong> Design profesional dengan testimonial, credential display, dan informasi perusahaan yang kredibel</p>
+            
+            <strong>Design Highlights</strong>
+            <ul>
+              <li>✓ Professional & trustworthy design untuk industri legal</li>
+              <li>✓ Clear service categorization dengan visual hierarchy</li>
+              <li>✓ Easy navigation untuk akses informasi paket layanan</li>
+              <li>✓ Clean layout yang fokus pada konten dan CTA</li>
+              <li>✓ Responsive design untuk semua device dengan consistent experience</li>
+              <li>✓ Strategic use of white space untuk professional look</li>
+            </ul>
+            
+            <strong>Impact</strong>
+            <ul>
+              <li>✓ Website berhasil diluncurkan dan live di production</li>
+              <li>✓ Meningkatkan digital presence dan kredibilitas perusahaan</li>
+              <li>✓ Memudahkan calon klien untuk memahami dan memilih layanan</li>
+              <li>✓ Conversion rate meningkat dengan clear CTA placement</li>
+            </ul>
+            
+            <strong>Key Learnings</strong>
+            <ul>
+              <li>Merancang UI/UX untuk website corporate di industri legal yang memerlukan trust</li>
+              <li>Pengalaman freelance project dari brief hingga deployment</li>
+              <li>Memahami kebutuhan bisnis B2B dalam presentation layanan</li>
+              <li>Responsive web design best practices untuk berbagai device</li>
+              <li>Balance antara aesthetic dan conversion optimization</li>
+            </ul>
+            
+            <p><strong>Live Website:</strong> <a href="https://client-cla-indonesia.vercel.app" target="_blank" style="color:var(--accent)">client-cla-indonesia.vercel.app</a></p>
+          </div>
+          <div class="links">
+            <a href="https://www.figma.com/design/cLvWpEICAJcdp4Jr5i35Rq/Untitled?node-id=0-1&p=f&t=oEpQ68SlrKdx5DFP-0" target="_blank">
+              <span>Figma</span>
+              <span>↗</span>
+            </a>
+            <a href="https://client-cla-indonesia.vercel.app" target="_blank">
+              <span>Live Site</span>
+              <span>↗</span>
+            </a>
+          </div>
+          <div class="toggle" role="button" tabindex="0" aria-pressed="false">
+            <span>Show details</span>
+            <span>▾</span>
+          </div>
+        </article>
+
+        <article class="project" id="mercu">
+          <h3>Universitas Mercu Buana — Website Redesign</h3>
+          <div class="meta">Year: Juli 2024 • Role: UI/UX Designer • Tools: Figma • Type: Freelance</div>
+          <p>Redesign website universitas untuk meningkatkan user experience, modernisasi tampilan, dan kemudahan akses informasi akademik untuk mahasiswa, dosen, dan calon mahasiswa.</p>
+          <div class="details">
+            <strong>About the Project</strong>
+            <p>Project redesign website Universitas Mercu Buana bertujuan untuk menciptakan platform digital yang lebih modern, informatif, dan user-friendly. Website dirancang dengan fokus pada kemudahan akses informasi akademik dan kegiatan kampus untuk berbagai stakeholder.</p>
+            
+            <strong>Key Pages Redesigned (12 Pages)</strong>
+            <p><strong>1. Home Page</strong> — Hero section dengan visual kampus menarik, quick access ke informasi penting, section berita dan event kampus, testimonial dan achievement highlights</p>
+            
+            <p><strong>2. Dosen (Lecturer)</strong> — Profile dosen dengan foto profesional, Dean's message section, Sekretaris Prodi information, easy navigation</p>
+            
+            <p><strong>3. Mahasiswa (Student)</strong> — Program studi information, Faculty & Programme study details, Upload area untuk tugas dan dokumen, Student resources</p>
+            
+            <p><strong>4. Kurikulum</strong> — Detailed curriculum information, CPI Program visualization, Scientific vision explanation, Program structure yang mudah dipahami</p>
+            
+            <p><strong>5. PJM (Quality Assurance)</strong> — PJM standard information, Quality assurance guidelines, Upload system untuk dokumen, 360-degree evaluation info</p>
+            
+            <p><strong>6. Tridharma</strong> — Tridharma Perguruan Tinggi information, Upload proposal & laporan system, Academic activity documentation</p>
+            
+            <p><strong>7. P.Akademik (Academic Guidance)</strong> — Pembimbing Akademik system, Upload laporan PA functionality, Form unduh diri (withdrawal form)</p>
+            
+            <p><strong>8. Kegiatan (Activities)</strong> — Campus events & activities, Student engagement programs, Event calendar and registration</p>
+            
+            <p><strong>9. Kerja Praktek (Internship)</strong> — Internship program information, Application and documentation upload, Guidelines for students</p>
+            
+            <p><strong>10. Library</strong> — Library resources access, Podcast section, Digital collections</p>
+            
+            <p><strong>11. Prestasi (Achievements)</strong> — Student & university achievements showcase, Awards and recognition</p>
+            
+            <p><strong>12. Contact Us</strong> — Contact form, Location information, Support channels</p>
+            
+            <strong>Design Features</strong>
+            <p><strong>Modern Visual Design</strong> — Color scheme: Dark teal & lime green untuk brand identity, Clean typography untuk readability, Consistent spacing dan layout grid</p>
+            
+            <p><strong>Information Architecture</strong> — Clear navigation struktur, Categorized content untuk easy access, Search-friendly organization</p>
+            
+            <p><strong>Interactive Elements</strong> — Upload document functionality, Download center untuk forms, Event calendar integration, News & announcement section</p>
+            
+            <p><strong>Responsive Design</strong> — Mobile-friendly layout, Tablet optimization, Desktop full experience</p>
+            
+            <strong>User Types Considered</strong>
+            <ul>
+              <li><strong>Calon Mahasiswa</strong> — Informasi program studi dan pendaftaran</li>
+              <li><strong>Mahasiswa Aktif</strong> — Akses kurikulum, upload tugas, info event</li>
+              <li><strong>Dosen</strong> — Profile management, academic information</li>
+              <li><strong>Stakeholder</strong> — Quality assurance, achievement information</li>
+            </ul>
+            
+            <strong>Challenges & Solutions</strong>
+            <p><strong>Challenge:</strong> Menampilkan banyak informasi akademik yang kompleks<br>
+            <strong>Solution:</strong> Information hierarchy yang jelas dengan section-based layout dan progressive disclosure</p>
+            
+            <p><strong>Challenge:</strong> Accommodating berbagai user type dengan kebutuhan berbeda<br>
+            <strong>Solution:</strong> Clear navigation dan categorization per user type dengan personalized dashboard</p>
+            
+            <p><strong>Challenge:</strong> Modernisasi tampilan tanpa kehilangan kredibilitas institusi<br>
+            <strong>Solution:</strong> Balance antara modern design dengan professional look menggunakan brand colors</p>
+            
+            <strong>Design Highlights</strong>
+            <ul>
+              <li>✓ Modern & professional look untuk institusi pendidikan</li>
+              <li>✓ User-friendly navigation untuk berbagai user type</li>
+              <li>✓ Comprehensive information architecture dengan 12+ pages</li>
+              <li>✓ Interactive upload/download features untuk dokumen</li>
+              <li>✓ Clear visual hierarchy untuk konten akademik</li>
+              <li>✓ Consistent brand identity throughout all pages</li>
+              <li>✓ Event calendar dan news system integration</li>
+            </ul>
+            
+            <strong>Key Learnings</strong>
+            <ul>
+              <li>Pengalaman redesign website untuk institusi pendidikan dengan kompleksitas tinggi</li>
+              <li>Memahami kebutuhan multi-stakeholder dalam satu platform</li>
+              <li>Information architecture untuk konten akademik yang kompleks dan beragam</li>
+              <li>Balance antara aesthetic dan functionality untuk educational website</li>
+              <li>Importance of accessibility dan usability dalam education platforms</li>
+            </ul>
+          </div>
+          <div class="links">
+            <a href="https://www.figma.com/design/WK1BK14lTqKFiXlpif8S53/Project-Redesign-Website-Mercu?node-id=0-1&p=f&t=gs6PBPu7BiJ3OjOu-0" target="_blank">
+              <span>Figma</span>
+              <span>↗</span>
+            </a>
+          </div>
+          <div class="toggle" role="button" tabindex="0" aria-pressed="false">
+            <span>Show details</span>
+            <span>▾</span>
+          </div>
+        </article>
+      </section>
+
+      <section id="contact">
+        <div class="card">
+          <h3>Let's Work Together</h3>
+          <p class="meta">Interested in working together or want the full case studies? Send me a message.</p>
+          <p style="margin:12px 0"><strong>Email:</strong> m.ihsannudinalfarizi@gmail.com</p>
+            <p style="margin:12px 0"><strong>Phone:</strong> 082158209986</p>
+          <p style="margin:12px 0"><strong>LinkedIn:</strong> <a href="#">https://www.linkedin.com/in/m-ihsanuddin-alfarizi-6aa2a7302/</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>© 2025 M. Ihsanuddin Alfarizi — UI/UX Designer · Built with ❤️</small>
+    </footer>
+  </div>
+
+  <script>
+    // Toggle project details
+    document.querySelectorAll('.toggle').forEach(toggle => {
+      const project = toggle.closest('.project');
+      toggle.addEventListener('click', () => {
+        const isShown = project.classList.toggle('show');
+        const textSpan = toggle.querySelector('span:first-child');
+        const arrowSpan = toggle.querySelector('span:last-child');
+        textSpan.textContent = isShown ? 'Hide details' : 'Show details';
+        arrowSpan.textContent = isShown ? '▴' : '▾';
+        toggle.setAttribute('aria-pressed', isShown);
+      });
+      
+      toggle.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle.click();
+        }
+      });
+    });
+    
+    // Scroll indicator
+    window.addEventListener('scroll', () => {
+      const indicator = document.querySelector('.scroll-indicator');
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / scrollHeight) * 100;
+      indicator.style.width = scrolled + '%';
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all project cards
+    document.querySelectorAll('.project').forEach(project => {
+      observer.observe(project);
+    });
+  </script>
+</body>
+</html>
